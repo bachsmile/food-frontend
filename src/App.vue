@@ -1,0 +1,131 @@
+<template>
+  <div>
+    <FlexChat/>
+    <ScrollTop/>
+    <router-view/>
+  </div>
+</template>
+<script>
+import FlexChat from './components/tools/FlexChat.vue'
+import ScrollTop from './components/tools/ScrollTop.vue'
+import { EventBus } from './service/eventBus'
+export default {
+    components: { FlexChat, ScrollTop },
+    mounted () {
+        this.$store.commit('setToken')
+        window.addEventListener('scroll', (e) => {
+            // console.log(window.scrollY)
+            EventBus.$emit('scrollShowPattents', window.scrollY)
+        })
+        this.$store.commit('getProductList')
+    }
+}
+</script>
+<style lang="scss">
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --main-font: 'Source Sans Pro', sans-serif;
+    --secondary-font: 'Herr Von Muellerhoff', cursive;
+    --body-font: 'Cabin', sans-serif;
+    --main-font-color-dark: #381010;
+    --secondary-font-color: #c59d5f;
+    --body-font-color: #515151;
+}
+.body{
+    overflow: hidden;
+}
+html{
+    font-family:  var(--body-font);
+    font-size: 10px;
+    color: var(--body-font-color);
+    scroll-behavior: smooth;
+}
+
+section{
+    padding: 3.9rem 0;
+}
+
+a{
+    color: #fff !important;
+}
+a:hover{
+    text-decoration: none !important;
+    color: #fff ;
+}
+Link{
+    text-decoration: none;
+}
+p{
+    font-size: 1.6rem;
+}
+.row{
+    min-width: 100%;
+    height: auto;
+}
+.containerFull{
+    width: 100%;
+}
+.containerS{
+    width: 100%;
+    max-width: 122.5rem;
+    margin: 0 auto;
+    padding:  0 2.4rem;
+}
+
+.page{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-image: url(~@/assets/img/bg.jpg);
+    color: #fff;
+}
+ul{
+    margin-bottom: 0% !important;
+}
+.darkMode{
+    background-image: url(~@/assets/img/bg.jpg);
+}
+.ImgBgHome{
+    width: 100%;
+    max-width: 100%;
+}
+.waiting{
+    width: 100%;
+    height: 100vh;
+    background-color: #212433;
+    display: flex;
+    margin: 50px;
+    justify-content: center;
+    color: aliceblue;
+    font-size: 5rem;
+    font-weight: 800;
+}
+.positionFixed{
+    position: fixed;
+}
+a:hover{
+    text-decoration: none;
+}
+.page-container{
+    width: 80%;
+    margin: 0 auto;
+}
+.textWhite{
+    color: #fff;
+}
+.textWhite:hover{
+    text-decoration: none !important;
+    color: #fff ;
+}
+.fullWith{
+    width: 100%;
+}
+
+</style>

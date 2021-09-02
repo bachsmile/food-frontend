@@ -1,0 +1,127 @@
+<template>
+    <div class='error'>
+        <HeaderContact/>
+        <div class="detail">
+            <div class="noFound">
+                <div class="title">404</div>
+                <div class="lable">
+                    NOT FOUND PAGE
+                </div>
+                <div class='back'>
+                    <span>Click back to home
+                        <span class='pannelBack'>
+                            <router-link to='/Home' ><i class="fas fa-home iconHome"></i></router-link>
+                            <div class="nextBtn1">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import HeaderContact from '../components/header/header-contact/HeaderContact.vue'
+export default {
+    components: { HeaderContact },
+    name: 'ErrorPage',
+    mounted () {
+        console.log(this.$store.state.a)
+    }
+}
+</script>
+
+<style lang='scss'>
+.error{
+    background-image:  url(~@/assets/img/bg.jpg);
+    width: 100%;
+    min-height: 100vh;
+    transition: 1s ease-in-out;
+}
+.detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+    .noFound{
+        text-align: center;
+        font-weight: 600;
+        .title{
+            font-size: 10rem;
+        }
+        .lable{
+            font-size: 8rem;
+        }
+        .back{
+            color:  var(--secondary-font-color);
+            font-size: 4rem;
+            .iconHome{
+                margin-left: 120px;
+            }
+            .pannelBack{
+                position: relative;
+            }
+        }
+    }
+}
+.nextBtn1 {
+    position: absolute;
+    bottom: -65px;
+    right: 53px;
+    height: 27px;
+    width: 27px;
+    z-index: 2000;
+    cursor: pointer;
+    transform: translateY(-80px) translateX(-50%) rotate(45deg);
+    span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-top: 4px solid white;
+        border-right: 4px solid white;
+        animation: animateBtn 1.5s linear infinite;
+        // opacity: 0;
+    }
+    span:nth-child(1) {
+        transform: translate(-50px, 50px);
+        animation-delay: -0.4s;
+
+    }
+    span:nth-child(2) {
+        transform: translate(-25px, 25px);
+        animation-delay: -0.2s;
+    }
+    span:nth-child(3) {
+        transform: translate(0, 0);
+        animation-delay: 0s;
+    }
+}
+@keyframes animateBtn {
+    0% {
+        bottom: 5px;
+        left: -50px;
+        opacity: 0;
+    }
+    25% {
+        bottom: 5;
+        left: 0;
+        opacity: 1;
+    }
+    50%,
+    100% {
+        bottom: 5px;
+        left: 5px;
+        border-top: 4px solid gray;
+        opacity: 0;
+    }
+}
+</style>
