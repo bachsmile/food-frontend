@@ -11,7 +11,7 @@ const UserAPi = {
     },
     postRegister: (params) => {
         const url = '/users/register'
-        console.log(process.env.VUE_APP_API_URL)
+        console.log(process.env)
         return axiosClient.post(url, params)
     }
 }

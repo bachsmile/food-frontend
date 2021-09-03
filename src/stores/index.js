@@ -31,6 +31,7 @@ export default new Vuex.Store({
                     return ''
                 })
                 .catch((error) => {
+                    console.log(process.env)
                     console.log(error)
                     return ''
                 })
